@@ -45,9 +45,7 @@ HandleInertiaRequests: temaPanel = true untuk Admin, Manager, dan /login-pengelo
 
 Karena token ditimpa di `<html>`, komponen `ui/` yang sama otomatis tampil dengan palet panel, termasuk dropdown, dialog, dan sheet yang muncul di luar halaman.
 
-::: warning Beda dengan catatan lama
-README artifact dan `panduan.md` masih menyebut panel Manager belum memakai tema ini. Sejak 14 November 2026, Manager juga memakainya. Kode di `HandleInertiaRequests.php` adalah acuannya.
-:::
+Panel Manager memakai tema ini sejak 14 November 2026. Acuannya `temaPanel` di `HandleInertiaRequests.php`.
 
 ## Halaman di bagian ini
 
