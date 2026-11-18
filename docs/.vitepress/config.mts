@@ -19,6 +19,8 @@ const BAGIAN: { folder: string; judul: string }[] = [
   { folder: 'frontend/manager', judul: 'Halaman Manager' },
   { folder: 'frontend/komponen', judul: 'Komponen aplikasi' },
   { folder: 'kelompok', judul: 'File lain (per kelompok)' },
+  { folder: 'ds/penyewa', judul: 'Design system: penyewa' },
+  { folder: 'ds/administrator', judul: 'Design system: administrator' },
 ]
 
 function frontmatter(isi: string): Record<string, string> {
@@ -62,6 +64,13 @@ export default defineConfig({
       { text: 'Mulai di sini', link: '/mulai/cara-membaca' },
       { text: 'Aturan kode', link: '/mulai/aturan-kode' },
       { text: 'Glosarium', link: '/mulai/glosarium' },
+      {
+        text: 'Design system',
+        items: [
+          { text: 'Penyewa', link: '/ds/penyewa/ikhtisar' },
+          { text: 'Administrator', link: '/ds/administrator/ikhtisar' },
+        ],
+      },
     ],
     sidebar: BAGIAN.map((b) => ({ text: b.judul, collapsed: b.folder !== 'mulai', items: isiBagian(b.folder) })).filter(
       (b) => b.items.length > 0,
