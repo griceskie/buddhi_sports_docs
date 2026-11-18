@@ -4,6 +4,8 @@ Situs dokumentasi kode untuk aplikasi [Buddhi Sports](https://github.com/gricesk
 
 Situs dibuat dengan [VitePress](https://vitepress.dev). Isinya file Markdown biasa di folder `docs/`.
 
+Tampilannya mengikuti shadcn/ui (base color neutral, font Geist), terang dan gelap. Token dan aturannya ada di `docs/.vitepress/theme/style.css`.
+
 ## Menjalankan di komputer
 
 Butuh Node.js 18 atau lebih baru.
@@ -37,6 +39,7 @@ npm run preview
 | `docs/frontend/layout/` | Layout |
 | `docs/frontend/penyewa/`, `admin/`, `manager/` | Halaman per peran |
 | `docs/frontend/komponen/` | Komponen aplikasi yang besar |
+| `docs/ds/penyewa/`, `docs/ds/administrator/` | Design system penyewa dan panel pengelola: warna, tipografi, bentuk, komponen, pola halaman, cara menulis |
 | `docs/kelompok/` | File yang dijelaskan berkelompok: komponen `ui/`, komponen kecil, model lain, auth Breeze, migration, tes |
 
 ## Menambah halaman

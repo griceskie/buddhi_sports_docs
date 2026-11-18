@@ -1,0 +1,459 @@
+/*
+ * Tampilan situs mengikuti shadcn/ui (style new-york, base color neutral).
+ * Lapis 1: token shadcn (--background, --foreground, ...), nilainya sama dengan `npx shadcn init` versi Tailwind v4.
+ * Lapis 2: variabel VitePress (--vp-c-*) diarahkan ke token itu.
+ * Lapis 3: aturan untuk elemen yang tidak cukup diatur lewat variabel (tabel, kotak info, sidebar, kode).
+ */
+
+/* ---------- Lapis 1: token shadcn ---------- */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --warning: oklch(0.666 0.179 58.318);
+  --info: oklch(0.546 0.245 262.881);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --warning: oklch(0.828 0.189 84.429);
+  --info: oklch(0.707 0.165 254.624);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+}
+
+/* ---------- Lapis 2: variabel VitePress ---------- */
+:root,
+.dark {
+  --vp-font-family-base: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --vp-font-family-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --vp-c-bg: var(--background);
+  --vp-c-bg-alt: var(--background);
+  --vp-c-bg-elv: var(--popover);
+  --vp-c-bg-soft: var(--muted);
+
+  --vp-c-text-1: var(--foreground);
+  --vp-c-text-2: var(--muted-foreground);
+  --vp-c-text-3: var(--muted-foreground);
+
+  --vp-c-border: var(--border);
+  --vp-c-divider: var(--border);
+  --vp-c-gutter: var(--border);
+
+  --vp-c-brand-1: var(--foreground);
+  --vp-c-brand-2: var(--foreground);
+  --vp-c-brand-3: var(--primary);
+  --vp-c-brand-soft: var(--accent);
+
+  --vp-c-default-1: var(--muted-foreground);
+  --vp-c-default-2: var(--border);
+  --vp-c-default-3: var(--border);
+  --vp-c-default-soft: var(--muted);
+
+  --vp-c-tip-1: var(--foreground);
+  --vp-c-tip-soft: var(--card);
+  --vp-c-warning-1: var(--warning);
+  --vp-c-warning-soft: var(--card);
+  --vp-c-danger-1: var(--destructive);
+  --vp-c-danger-soft: var(--card);
+
+  --vp-button-brand-bg: var(--primary);
+  --vp-button-brand-text: var(--primary-foreground);
+  --vp-button-brand-border: var(--primary);
+  --vp-button-brand-hover-bg: color-mix(in oklab, var(--primary) 90%, transparent);
+  --vp-button-brand-hover-text: var(--primary-foreground);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-active-bg: var(--primary);
+  --vp-button-alt-bg: var(--background);
+  --vp-button-alt-text: var(--foreground);
+  --vp-button-alt-border: var(--border);
+  --vp-button-alt-hover-bg: var(--accent);
+  --vp-button-alt-hover-text: var(--accent-foreground);
+
+  --vp-code-color: var(--foreground);
+  --vp-code-bg: var(--muted);
+  --vp-code-block-bg: var(--muted);
+  --vp-code-block-divider-color: var(--border);
+  --vp-code-line-number-color: var(--muted-foreground);
+  --vp-code-copy-code-bg: var(--background);
+  --vp-code-copy-code-border-color: var(--border);
+  --vp-code-copy-code-hover-bg: var(--accent);
+
+  --vp-home-hero-name-color: var(--foreground);
+  --vp-nav-bg-color: color-mix(in oklab, var(--background) 95%, transparent);
+  --vp-sidebar-bg-color: var(--background);
+  --vp-local-search-bg: var(--background);
+  --vp-local-search-highlight-bg: var(--foreground);
+  --vp-local-search-highlight-text: var(--background);
+}
+
+/* ---------- Lapis 3: elemen ---------- */
+::selection {
+  background: color-mix(in oklab, var(--foreground) 15%, transparent);
+}
+
+body {
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Bar atas: garis bawah tipis dan latar buram, seperti header ui.shadcn.com */
+.VPNav .VPNavBar,
+.VPNav .VPNavBar.has-sidebar .content-body,
+.VPNav .VPNavBar:not(.home.top) .content-body {
+  background: var(--vp-nav-bg-color);
+  backdrop-filter: blur(8px);
+}
+.VPNavBar .divider-line,
+.VPNavBar.has-sidebar .divider-line {
+  background-color: var(--border) !important;
+}
+.VPNavBarTitle .title {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.VPNavBarMenuLink {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--muted-foreground) !important;
+}
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--foreground) !important;
+}
+
+/* Tombol cari: kotak input abu seperti Command menu shadcn */
+.DocSearch-Button,
+.VPNavBarSearchButton {
+  border: 1px solid var(--border) !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  background: var(--muted) !important;
+}
+#local-search .VPLocalSearchBox .shell {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+#local-search .result {
+  border-radius: calc(var(--radius) - 2px) !important;
+}
+
+/* Sidebar: judul kelompok kecil abu, item aktif dengan latar accent */
+.VPSidebar {
+  border-right: 1px solid var(--border);
+}
+.VPSidebarItem.level-0 > .item > .text,
+.VPSidebarItem.level-0 > .item > .link > .text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  letter-spacing: 0;
+}
+.VPSidebarItem.level-1 .text {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+.VPSidebarItem.level-1 .link {
+  margin: 1px -8px;
+  padding: 0 8px;
+  border-radius: calc(var(--radius) - 2px);
+}
+.VPSidebarItem.level-1 .link:hover {
+  background: var(--accent);
+}
+.VPSidebarItem.level-1.is-active > .item .link {
+  background: var(--accent);
+}
+.VPSidebarItem.level-1.is-active > .item .link .text {
+  font-weight: 500;
+  opacity: 1;
+  color: var(--accent-foreground);
+}
+.VPSidebarItem .indicator {
+  display: none;
+}
+
+/* Isi halaman */
+.vp-doc h1 {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.vp-doc h2 {
+  margin-top: 48px;
+  padding-top: 0;
+  border-top: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.vp-doc h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.vp-doc h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.75;
+}
+.vp-doc a {
+  color: var(--foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in oklab, var(--foreground) 35%, transparent);
+  transition: text-decoration-color 0.15s;
+}
+.vp-doc a:hover {
+  color: var(--foreground);
+  text-decoration-color: var(--foreground);
+}
+.vp-doc .header-anchor {
+  text-decoration: none;
+  color: var(--muted-foreground);
+}
+
+/* Kode */
+.vp-doc :not(pre) > code {
+  padding: 0.15rem 0.35rem;
+  border-radius: calc(var(--radius) - 4px);
+  font-size: 0.875em;
+  font-weight: 500;
+}
+.vp-doc a > code {
+  color: inherit;
+}
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--border);
+  border-radius: var(--radius) !important;
+  margin: 20px 0 !important;
+}
+.vp-doc [class*='language-'] > span.lang {
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.vp-doc .line-numbers-wrapper {
+  border-right: 1px solid var(--border);
+}
+
+/* Tabel: gaya <Table> shadcn, berbingkai, kepala abu, tanpa zebra */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 14px;
+}
+.vp-doc table:where(:has(td:nth-child(4))) {
+  display: block;
+  overflow-x: auto;
+}
+.vp-doc tr {
+  border-top: none;
+  background: transparent !important;
+}
+.vp-doc th,
+.vp-doc td {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  vertical-align: top;
+}
+.vp-doc tr:last-child td {
+  border-bottom: none;
+}
+.vp-doc th {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  text-align: left;
+}
+.vp-doc tbody tr:hover td {
+  background: color-mix(in oklab, var(--muted) 50%, transparent);
+}
+
+/* Kotak info, tip, peringatan: gaya <Alert> shadcn */
+.vp-doc .custom-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--card-foreground);
+  padding: 14px 18px;
+  font-size: 14px;
+}
+.vp-doc .custom-block .custom-block-title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.vp-doc .custom-block p,
+.vp-doc .custom-block li {
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+.vp-doc .custom-block strong {
+  color: var(--foreground);
+}
+.vp-doc .custom-block.info {
+  border-left: 3px solid var(--foreground);
+}
+.vp-doc .custom-block.tip {
+  border-left: 3px solid var(--info);
+}
+.vp-doc .custom-block.warning {
+  border-left: 3px solid var(--warning);
+}
+.vp-doc .custom-block.warning .custom-block-title {
+  color: var(--warning);
+}
+.vp-doc .custom-block.danger {
+  border-left: 3px solid var(--destructive);
+}
+.vp-doc .custom-block.danger .custom-block-title {
+  color: var(--destructive);
+}
+.vp-doc .custom-block a {
+  color: var(--foreground);
+}
+.vp-doc .custom-block code {
+  background: var(--muted);
+}
+
+/* Contoh warna di halaman DS */
+.vp-doc .swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+/* Outline kanan */
+.VPDocAsideOutline .outline-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+.VPDocAsideOutline .outline-link {
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+.VPDocAsideOutline .outline-link:hover,
+.VPDocAsideOutline .outline-link.active {
+  color: var(--foreground);
+}
+.VPDocAsideOutline .outline-marker {
+  background-color: var(--foreground);
+}
+
+/* Navigasi bawah halaman: kartu berbingkai */
+.VPDocFooter .pager-link {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.VPDocFooter .pager-link:hover {
+  background: var(--accent);
+  border-color: var(--border);
+}
+.VPDocFooter .pager-link .title {
+  color: var(--foreground);
+}
+
+/* Beranda */
+.VPHero .name,
+.VPHero .text {
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+@media (min-width: 960px) {
+  .VPHero .name {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+  .VPHero .text {
+    font-size: 30px;
+    line-height: 1.25;
+    color: var(--muted-foreground);
+  }
+}
+.VPHero .tagline {
+  color: var(--muted-foreground);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.VPButton {
+  border-radius: calc(var(--radius) - 2px) !important;
+  font-weight: 500 !important;
+}
+.VPButton.medium {
+  height: 40px;
+  line-height: 38px !important;
+  padding: 0 18px !important;
+  font-size: 14px !important;
+}
+.VPFeature {
+  border: 1px solid var(--border) !important;
+  border-radius: calc(var(--radius) + 4px) !important;
+  background: var(--card) !important;
+}
+.VPFeature .title {
+  font-weight: 600;
+}
+.VPFeature .details {
+  color: var(--muted-foreground);
+}
+.VPFeature.link:hover {
+  background: var(--accent) !important;
+}
+
+/* Layar kecil: judul lebih kecil supaya nama file panjang tidak terpotong jelek */
+@media (max-width: 639px) {
+  .vp-doc h1 {
+    font-size: 1.75rem;
+    overflow-wrap: anywhere;
+  }
+  .vp-doc h2 {
+    font-size: 1.3rem;
+  }
+}
